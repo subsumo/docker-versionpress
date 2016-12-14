@@ -8,13 +8,13 @@ fi
 
 # Declare project vars
 if [ ! -z $WP_SKELETON ]; then
-  PROJECT_DIR="/var/www/html/default"
+  PROJECT_DIR="/var/www/html/"
   WP_DIR="$PROJECT_DIR/wp"
   WP_CONTENT_DIR="$PROJECT_DIR/content"
   WP_CONFIG="$PROJECT_DIR/local-config.php"
   WP_CONFIG_SAMPLE="$PROJECT_DIR/local-config-sample.php"
 else
-  PROJECT_DIR="/var/www/html/default"
+  PROJECT_DIR="/var/www/html/"
   WP_DIR=$PROJECT_DIR
   WP_CONTENT_DIR="$WP_DIR/wp-content"
   WP_CONFIG="$WP_DIR/wp-config.php"

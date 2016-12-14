@@ -18,8 +18,12 @@ RUN wp cli update --nightly --yes
 RUN chmod g-w,o-w /bin && chmod g-w,o-w /bin/wp-cli.phar
 
 # Download Versionpress
-ENV VERSIONPRESS_VERSION 3.0.1
-RUN curl -L -o /versionpress.zip https://github.com/versionpress/versionpress/releases/download/$VERSIONPRESS_VERSION/versionpress-$VERSIONPRESS_VERSION.zip \
+ENV VERSIONPRESS_VERSION 4.0-alpha1
+RUN curl -L -o /versionpress.zip https://github.com/versionpress/versionpress/releases/download/4.0-alpha1/versionpress-4.0-alpha1.zip
+
+#RUN curl -L -o /versionpress.zip https://github.com/versionpress/versionpress/releases/download/$VERSIONPRESS_VERSION/
+
+versionpress-$VERSIONPRESS_VERSION.zip \
     && unzip /versionpress.zip -d /usr/src/versionpress \
     && rm /versionpress.zip \
     && chown -R www-data:www-data /usr/src/versionpress
@@ -32,7 +36,7 @@ COPY xdebug.ini /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
 ENV WORDPRESS_OPCACHE 'off'
 
 # Set working directory to support vp clone
-WORKDIR /var/www/html/default
+WORKDIR /var/www/html
 
 # Allow for mounting versionpress via volume
 VOLUME /versionpress
